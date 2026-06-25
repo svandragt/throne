@@ -3,17 +3,20 @@ CONFIG_FILE := $(CONFIG_DIR)/rules.toml
 SERVICE_DIR := $(HOME)/.config/systemd/user
 SERVICE     := throne.service
 
-.PHONY: run install uninstall enable disable deps help
+.PHONY: run install uninstall enable disable reload deps help
 
 help:
-	@echo "targets: deps, run, install, uninstall, enable, disable"
+	@echo "targets: deps, run, install, uninstall, enable, disable, reload"
 
 deps:
 	uv add python-xlib tomli
 	sudo apt-get install -y wmctrl xdotool x11-utils
 
 run:
-	python throne.py
+	python3 throne.py
+
+reload:
+	systemctl --user restart $(SERVICE)
 
 install:
 	@mkdir -p $(CONFIG_DIR)

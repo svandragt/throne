@@ -266,7 +266,7 @@ def main():
             current = set(prop.value) if prop else set()
             for wid in current - seen:
                 work_queue.put(dpy.create_resource_object("window", wid))
-            seen = current
+            seen = current  # shrinks when windows close, preventing stale ID reuse
         except Exception as e:
             print(f"[throne] poll error: {e}", file=sys.stderr)
         time.sleep(0.5)
