@@ -1,0 +1,34 @@
+# throne — example rules
+# Copy to ~/.config/throne/rules.toml and edit.
+
+# Time tracker
+[[rules]]
+match.class = "python3"
+match.title = "Time Tracker"
+actions = ["always_on_top"]
+
+# Keep Zoom always on top
+[[rules]]
+match.class = "zoom"
+actions = ["always_on_top"]
+
+# mpv fullscreen when title contains "Video"
+[[rules]]
+match.class = "mpv"
+match.title = "*video*"
+actions = ["always_on_top", "fullscreen"]
+
+# OBS: sticky across workspaces, 85% opacity
+[[rules]]
+match.executable = "obs"
+actions = ["sticky", "opacity=0.85"]
+
+# Signal on workspace 2, hidden from taskbar
+[[rules]]
+match.class = "signal"
+actions = ["workspace=2", "skip_taskbar"]
+
+# Calculator: small floating window at top-right
+[[rules]]
+match.class = "gnome-calculator"
+actions = ["always_on_top", "geometry=400x600+1520+0"]

@@ -1,0 +1,13 @@
+[Unit]
+Description=throne window rule daemon
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=python3 -u %h/.local/bin/throne
+Restart=on-failure
+RestartSec=3
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=graphical-session.target
